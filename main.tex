@@ -1,0 +1,78 @@
+\documentclass[research]{BMSTU-IU8}
+
+%\usepackage[utf8]{inputenc}
+%\usepackage[T2A]{fontenc}
+%\usepackage{tempora}
+
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\usepackage{listingsutf8}
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage{verbatim}
+
+\usetikzlibrary{shapes.geometric, arrows, calc, positioning}
+
+\student{В. Д. Кадыков}
+\theme{Методы построения блоков нелинейной подстановки для использования\\в симметричных криптоалгоритмах}
+\group{ИУ8-104}
+\supervisor{П. Г. Ключарёв}
+\studentFullName{Кадыков Василий Дмитриевич}
+\profile{19У472}
+\speciality{10.05.01 <<Компьютерная безопасность>>}
+\specialization{10.05.01\_01 <<Математические методы защиты информации>>}
+\supervisorWithDegree{доктор наук, Ключарёв П. Г.}
+
+\researchConsultant{}
+\designConsultant{}
+\technologicalConsultant{}
+\economicsConsultant{}
+\lawsConsultant{}
+\normController{}
+
+\usepackage{biblatex}
+
+\defbibenvironment{nirs-bibliography}
+  {\list
+     {\printfield{labelnumber}}
+     {\setlength{\leftmargin}{0pt}% устанавливаем отступ слева
+      \setlength{\itemindent}{4.0em}% устанавливаем отступ для номера
+      \setlength{\parsep}{\parskip}}
+     \renewcommand*{\makelabel}[1]{\hss##1}}
+  {\endlist}
+  {\item}
+
+\makeatletter
+% +10mm ко всем сдвигам
+\renewcommand*\l@section{\@dottedtocline{0}{10mm}{2em}}
+\renewcommand*\l@structure{\@dottedtocline{0}{10mm}{0em}}
+\renewcommand*\l@subsection{\@dottedtocline{1}{15mm}{3em}}
+\renewcommand*\l@subsubsection{\@dottedtocline{2}{20mm}{4em}}
+\renewcommand*\l@paragraph{\@dottedtocline{3}{25mm}{5em}}
+\makeatother
+
+
+
+\addbibresource{main.bib}
+
+\begin{document}
+
+    %\maketitle
+    \include{contents/glossary.tex}
+    \include{contents/terms.tex}
+
+    \setcounter{page}{4}
+    \include{contents/Referat.tex}
+    
+    \tableofcontents % Содержание 
+    \termsanddefenitions
+    \listofabbreviations
+
+    
+    \include{contents/Introduction.tex}
+        
+    \printbibliography[env=nirs-bibliography]
+\end{document}
+

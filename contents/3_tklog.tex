@@ -78,7 +78,7 @@ $$
         return $\kappa(16 - i) \oplus (\alpha^{17})^{s(j)}$ \Comment*[r]{$i \neq 0$, поэтому $16 - i \neq 16$}
       }
     }
-  \caption{Новая декомпозиция \(\pi\)}
+  \caption{Новое разложение \(\pi\)}
   \label{alg:alg01}
 \end{algorithm}
 
@@ -154,14 +154,15 @@ x^{2^m} \oplus cx = y^{2^m} \oplus cy = 0 \implies (\mathscr{T}_{\kappa,s}(x))^{
 \]
 
 Взаимодействие TKlog с этими двумя разбиениями выходит за рамки отображения одного в другое. Действительно, рассмотрим более общую структуру, соответствующую перестановкам \( P \) таким, что:
-\[
-P :
-\begin{cases}
-0 & \mapsto \kappa (t_0(0)) \\
-\alpha^{(2m+1)j} & \mapsto \kappa (t_0(2^m - j)) \\
-\alpha^{i+(2m+1)j} & \mapsto \kappa (t_1(2^m - i)) \oplus (\alpha^{2m+1})^{s_i(j)} \text{ для } i > 0,
-\end{cases}
-\]
+\begin{equation}
+  P :
+  \begin{cases}
+    0 & \mapsto \kappa (t_0(0)) \\
+    \alpha^{(2m+1)j} & \mapsto \kappa (t_0(2^m - j)) \\
+    \alpha^{i+(2m+1)j} & \mapsto \kappa (t_1(2^m - i)) \oplus (\alpha^{2m+1})^{s_i(j)} \text{ для } i > 0,
+  \end{cases}
+  \label{eq:02}
+\end{equation}
 где \( t_0 \) и \( t_1 \) являются перестановками над \( \mathbb{F}_{2}^{m} \), и где \( s_i \) является перестановкой над \( \mathbb{Z}/(2^m - 1)\mathbb{Z} \) для всех \( i \in \mathbb{Z}/(2m + 1)\mathbb{Z} \). Любая такая \( P \) является перестановкой с точным свойством сохранения разбиения, описанного в Теореме 1, но ее вклад в \( GF (2^m) \) и в \( \kappa(\mathbb{F}_{2}^{m}) \) зависит от \( i \) и \( j \), даже если ограничиться \( i > 0 \). В случае с TKlogs это не так; эти перестановки намного проще.
 
 \textbf{Лемма 1} \textit{(Свойство разделения).} Пусть \( \mathscr{T}_{\kappa,s} : GF(2^{2m}) \to GF(2^{2m}) \) является допустимым экземпляром TKlog. Тогда для любых \( i, j \), таких что \( 0 < i \leq 2^m \) и \( 0 \leq j < 2^m - 1 \), выполняется:

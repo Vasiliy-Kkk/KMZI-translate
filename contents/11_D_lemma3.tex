@@ -1,0 +1,38 @@
+\appendixsection{Доказательство Леммы 3}
+
+Следующее доказательство по сути совпадает с доказательством из \cite{BPU16b}, оно приводится только для полноты.
+
+\begin{proof}
+Рассмотрим $F=\Phi_{\kappa} \circ \mathscr{T}_{\kappa, h, g_{m}, s} \circ Split_{\beta}^{-1}$. Пусть $a_{L}, a_{R}$ и $b_{L} \neq 0$ — некоторые $m$-битные линейные маски. По определению $LAT$ и $F$ получается:
+$$
+\begin{aligned}
+& \mathcal{W}_{F}\left[a_{L} \| a_{R}, b_{L}| | 0\right] \\
+& =\sum_{r \in \operatorname{GF}\left(2^{m}\right)} \sum_{\ell \in \mathrm{GF}\left(2^{m}\right)}(-1)^{a_{L} \cdot \ell+a_{R} \cdot r+\left(b_{L} \| 0\right) \cdot F(r \| \ell)} \\
+& =\underbrace{\sum_{\ell \in \mathrm{GF}\left(2^{m}\right)}(-1)^{a_{L} \cdot \ell+b_{L} \cdot \tau(\ell)}}_{r=0}+\sum_{r \in \mathrm{GF}\left(2^{m}\right)^*} \sum_{\ell \in \mathrm{GF}\left(2^{m}\right)}(-1)^{a_{L} \cdot \ell+a_{R} \cdot r+b_{L} \cdot \nu(\ell / r)} .
+\end{aligned}
+$$
+Первая сумма, соответствующая $r=0$, равна $\mathcal{W}_{\tau}\left[a_{L}, b_{L}\right]$. Чтобы оценить вторую сумму (где $r \neq 0$), подставим $u=\nu(\ell / r)$ так, чтобы $\ell=r \odot \nu^{-1}(u)$. Тогда можно записать
+$$
+\begin{aligned}
+& \sum_{r \in \operatorname{GF}\left(2^{m}\right)^{*}} \sum_{u \in \mathrm{GF}\left(2^{m}\right)}(-1)^{a_{L} \cdot\left(r \odot \nu^{-1}(u)\right)+a_{R} \cdot r+b_{L} \cdot u} \\
+= & \sum_{u \in \operatorname{GF}\left(2^{m}\right)}(-1)^{b_{L} \cdot u}\bigg(\sum_{r \in \mathrm{GF}\left(2^{m}\right)}(-1)^{a_{L} \cdot\left(r \odot \nu^{-1}(u)\right)+a_{R} \cdot r}-\underbrace{1}_{r=0}\bigg) \\
+= & \sum_{u \in \operatorname{GF}\left(2^{m}\right)}(-1)^{b_{L} \cdot u} \sum_{r \in \mathrm{GF}\left(2^{m}\right)}(-1)^{a_{L} \cdot\left(r \odot \nu^{-1}(u)\right)+a_{R} \cdot r}-\underbrace{\sum_{u \in \mathrm{GF}\left(2^{m}\right)}(-1)^{b_{L} \cdot u}}_{=0}
+\end{aligned}
+$$
+Сумма по $r$ соответствует оценке коэффициента Уолша линейной функции, такой, что $r \mapsto r \times \nu^{-1}(u)$. Как следствие, коэффициент равен 0 тогда и только тогда, когда функция $r \mapsto a_{R} \cdot r \oplus a_{L} \cdot\left(r \times \nu^{-1}(u)\right)$ является константной.
+
+Если $a_{L}=0$, то офункция никогда не будет константной. Таким образом, для $a_{L}=0$ получается
+$$
+\mathcal{W}_{F}\left[a_{L}\left\|a_{R}, b_{L}\right\| 0\right]=0+\mathcal{W}_{\tau}\left[0, b_{L}\right]=0
+$$
+
+Однако, если $a_{L} \neq 0$, то функция $r \mapsto a_{R} \cdot r \oplus a_{L} \cdot\left(r \odot \nu^{-1}(u)\right)$ константна ровно для одного значения $u$, и в этом случае сумма равна $2^{m}$. Таким образом, в этом случае получается
+$$
+\left(\sum_{u \in \operatorname{GF}\left(2^{m}\right)}(-1)^{b_{L} \cdot u} \sum_{r \in \operatorname{GF}\left(2^{m}\right)}(-1)^{a_{L} \cdot\left(r \odot \nu^{-1}(u)\right)+a_{R} \cdot r}\right) \in\left\{-2^{m},+2^{m}\right\}
+$$
+и в заключении, если $\left(a_{L}, a_{R}\right) \neq(0,0)$ и $b_{L} \neq 0$, то
+$$
+\mathcal{W}_{F}\left[a_{L}\left\|a_{R}, b_{L}\right\| 0\right]=\left(\mathcal{W}_{\tau}\left[a_{L}, b_{L}\right] \pm 2^{m}\right)\left[a_{L} \neq 0\right] .
+$$
+
+\end{proof}

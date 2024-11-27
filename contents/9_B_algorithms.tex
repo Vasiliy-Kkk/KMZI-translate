@@ -1,0 +1,38 @@
+\appendixsection{Алгоритмы}
+
+Алгоритм, реализцющий TKlog, приведен в Алгоритме \ref{alg:algB1}, а алгоритм, рассчитывающий его обратную величину TKexp в Алгоритме \ref{alg:algB2}.
+
+\begin{algorithm}[htp!]
+  \KwData{$x \in \text{GF}(2^{2m})$}
+  $k \gets \log^{FLY}_\alpha(x)$\;
+  \eIf{$k = 0$}{ 
+    \Return{$0$} \Comment*[r]{Случай $x = 0$}
+  }{
+    $i \gets k \mod (2^m + 1)$\;
+    $j \gets \left\lfloor k / (2^m + 1) \right\rfloor$ \Comment*[r]{$x = \alpha^{i + (2^m+1)j}$}
+    \eIf{$i = 0$}{ 
+      \Return{$\kappa(2^m - j)$} \Comment*[r]{т.к. $i = 0$, $j \in \{1, \ldots, 2^m - 1\} = (\mathbb{F}_2^m)^*$}
+    }{
+      \Return{$\kappa(2^m - i) \oplus \alpha^{(2^m+1)s(j)}$} \Comment*[r]{$i \neq 0$, поэтому $(2^m - i) \in \mathbb{F}_2^m$}
+    }
+  }
+\caption{Перестановка TKlog}
+\label{alg:algB1}
+\end{algorithm}
+
+\begin{algorithm}[htp!]
+  \KwData{$x \in GF(2^{2m})$}
+  \eIf{$x = 0$}{
+    \Return $0$\;
+  }{
+    $(k, v) \gets \Phi_{\kappa}(x)$\;
+    \eIf{$v = 0$ \Comment*[r]{Случай $x \in \kappa(F^m_2)$}}{
+      \Return $\alpha^{(2^m+1)(2^m-k)}$\;
+    }{
+      $j \gets \log_{\alpha}^{\text{FLY}}(v)/(2^m+1)$ \Comment*[r]{Всегда целое, т.к. $(\alpha^{2^m+1})^j = v$}
+      \Return $\alpha^{2^m-k+(2^m+1)s^{-1}(j)}$ \Comment*[r]{$k \in F^m_2$ so $k + 1 \in \{1, \ldots, 2^m\}$}
+    }
+  }
+  \caption{Перестановка TKexp}
+  \label{alg:algB2}
+\end{algorithm}

@@ -15,6 +15,11 @@
 \usepackage{mathrsfs}
 \usepackage{bm}
 \usepackage{algorithm2e}
+% \usepackage[perpage]{footmisc}
+\renewcommand{\thefootnote}{ \arabic{footnote})}
+\makeatletter
+\renewcommand{\@makefntext}[1]{\noindent\makebox[1.8em][r]{\@thefnmark}~#1}
+\makeatother
 
 
 \usetikzlibrary{shapes.geometric, arrows, calc, positioning}
